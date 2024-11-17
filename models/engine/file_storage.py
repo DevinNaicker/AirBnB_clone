@@ -14,8 +14,8 @@ class FileStorage:
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id."""
-            key = f"{obj.__class__.__name__}.{obj.id}"
-            FileStorage.__objects[key] = obj
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """This serializes __objects to the JSON file (path: __file_path)"""
@@ -23,7 +23,7 @@ class FileStorage:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
 
-     def reload(self):
+    def reload(self):
         """This reloads the stored objects"""
         if not os.path.isfile(FileStorage.__file_path):
             return
@@ -33,4 +33,3 @@ class FileStorage:
                         for k, v in obj_dict.items()}
             # TODO: should this overwrite or insert?
             FileStorage.__objects = obj_dict
-
