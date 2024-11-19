@@ -15,10 +15,10 @@ class BaseModel:
                 elif key != '__class__':
                     self.__dict__[key] = kwargs[key]
         else:
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
-        storage.new(self)
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
+            storage.new(self)
 
     def __str__(self):
         """Formats the class and returns the formatted string"""
